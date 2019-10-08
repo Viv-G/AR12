@@ -1,0 +1,45 @@
+﻿<Properties StartupConfiguration="{821ED78C-8D71-F70F-6A83-B88AC5742900}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs">
+    <Files>
+      <File FileName="Assets/GoogleARCore/Examples/ComputerVision/Scripts/TextureReader.cs" Line="1" Column="1" />
+      <File FileName="Assets/GoogleARCore/Examples/ComputerVision/Scripts/TextureReaderApi.cs" Line="1" Column="1" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/HelloARController.cs" Line="117" Column="56" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/PointcloudVisualizer.cs" Line="61" Column="57" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/EntryScript.cs" Line="7" Column="39" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneGenerator.cs" Line="1" Column="1" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AR12" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="GoogleARCore" expanded="True">
+                <Node name="Examples" expanded="True">
+                  <Node name="Common" expanded="True">
+                    <Node name="Scripts" expanded="True">
+                      <Node name="DetectedPlaneVisualizer.cs" selected="True" />
+                    </Node>
+                  </Node>
+                  <Node name="HelloAR" expanded="True">
+                    <Node name="Scripts" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="SDK" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d5a2af7a-8f48-4426-bc49-c08400d93c23" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
