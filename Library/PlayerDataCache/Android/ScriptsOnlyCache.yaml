@@ -13,8 +13,6 @@ ScriptsOnlyBuild:
     - GoogleARCore.Examples.HelloAR.CamImage
     - GoogleARCore.Examples.HelloAR.Connection
     - GoogleARCore.Examples.HelloAR.HelloARController
-    Unity.Mobile.AndroidLogcat.Editor.dll:
-    - Unity.Android.Logcat.AndroidLogcatConsoleWindow
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData

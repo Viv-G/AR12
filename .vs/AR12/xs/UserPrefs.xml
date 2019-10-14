@@ -1,15 +1,12 @@
 ﻿<Properties StartupConfiguration="{821ED78C-8D71-F70F-6A83-B88AC5742900}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/OpenCV+Unity/Demo/Identifiy_Contours_by_Shape/ContoursByShapeScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs">
     <Files>
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/HelloARController.cs" Line="134" Column="63" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/HelloARController.cs" Line="400" Column="10" />
       <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/PointcloudVisualizer.cs" />
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/EntryScript.cs" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/EntryScript.cs" Line="1" Column="1" />
       <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneGenerator.cs" />
       <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs" />
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs" Line="95" Column="46" />
-      <File FileName="Assets/GoogleARCore/Examples/ComputerVision/Scripts/ComputerVisionController.cs" Line="316" Column="1" />
-      <File FileName="Assets/OpenCV+Unity/Demo/Marker_Detector/MarkerDetector.cs" Line="1" Column="1" />
-      <File FileName="Assets/OpenCV+Unity/Demo/Identifiy_Contours_by_Shape/ContoursByShapeScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs" Line="71" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,7 +22,9 @@
                     <Node name="Scripts" expanded="True" />
                   </Node>
                   <Node name="HelloAR" expanded="True">
-                    <Node name="Scripts" expanded="True" />
+                    <Node name="Scripts" expanded="True">
+                      <Node name="CamImage.cs" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
               </Node>
@@ -35,9 +34,7 @@
                     <Node name="Scripts" expanded="True" />
                   </Node>
                   <Node name="Face_Detector" expanded="True" />
-                  <Node name="Identifiy_Contours_by_Shape" expanded="True">
-                    <Node name="ContoursByShapeScript.cs" selected="True" />
-                  </Node>
+                  <Node name="Identifiy_Contours_by_Shape" expanded="True" />
                   <Node name="Marker_Detector" expanded="True" />
                   <Node name="Scripts" expanded="True" />
                 </Node>

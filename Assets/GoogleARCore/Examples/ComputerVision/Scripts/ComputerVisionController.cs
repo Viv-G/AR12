@@ -313,6 +313,7 @@ namespace GoogleARCore.Examples.ComputerVision
 
                 const string TOP_LEFT_RIGHT = "_UvTopLeftRight";
                 const string BOTTOM_LEFT_RIGHT = "_UvBottomLeftRight";
+
                 EdgeDetectionBackgroundImage.material.SetVector(TOP_LEFT_RIGHT, new Vector4(
                     m_CameraImageToDisplayUvTransformation.TopLeft.x,
                     m_CameraImageToDisplayUvTransformation.TopLeft.y,

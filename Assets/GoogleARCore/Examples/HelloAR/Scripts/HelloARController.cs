@@ -28,6 +28,7 @@ namespace GoogleARCore.Examples.HelloAR
     using UnityEngine;
     using UnityEngine.EventSystems;
     using UnityEngine.UI;
+    using OpenCvSharp;
 
 #if UNITY_EDITOR
     // Set up touch input propagation while using Instant Preview in the editor.
@@ -386,14 +387,42 @@ namespace GoogleARCore.Examples.HelloAR
         /// <summary>
         /// Export Images (SAVE TO DISK)
         /// </summary>
-        private void ExportImages()
+/*        private void ExportImages()
         {
             var path = Application.persistentDataPath;
+            Texture2D result;
+            result = Unity.MatToTexture(output);
+            result.Apply();
+
+            byte[] im = result.EncodeToJPG(100);
             for (var i = 0; i < CamImage.AllData.Count; i++)
             {
                 byte[] imOut = CamImage.AllData[i];
                 string fileName = "/IMG" + i + ".jpg";
                 File.WriteAllBytes(path + fileName, imOut);
+                string messge = "Succesfully Saved Image To " + path + "\n";
+                Debug.Log(messge);
+            }
+        } */
+
+        private void ExportImages()
+        {
+            var path = Application.persistentDataPath;
+            Texture2D result;
+            StreamWriter sr = new StreamWriter(path + @"/intrinsics.txt");
+           // sr = new StreamWriter(path + "intrinsics.txt");
+            sr.WriteLine(CameraIntrinsicsOutput.text);
+            Debug.Log(CameraIntrinsicsOutput.text);
+            sr.Close();
+            for (var i = 0; i < CamImage.AllData.Count; i++)
+            {
+                Mat imOut = CamImage.AllData[i];
+                result = Unity.MatToTexture(imOut);
+                result.Apply();
+
+                byte[] im = result.EncodeToJPG(100);
+                string fileName = "/IMG" + i + ".jpg";
+                File.WriteAllBytes(path + fileName, im);
                 string messge = "Succesfully Saved Image To " + path + "\n";
                 Debug.Log(messge);
             }

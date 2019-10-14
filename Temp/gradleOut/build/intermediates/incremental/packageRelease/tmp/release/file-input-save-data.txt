@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Oct 14 14:57:32 AEDT 2019
+#Tue Oct 15 00:39:46 AEDT 2019
 124.path=bin/Data/Managed/System.Configuration.dll
 60.set=NATIVE_RESOURCE
 52.set=ASSET
