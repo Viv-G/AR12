@@ -20,11 +20,14 @@
 
 namespace GoogleARCore.Examples.HelloAR
 {
+    using System;
     using System.Collections.Generic;
+    using System.IO;
     using GoogleARCore;
     using GoogleARCore.Examples.Common;
     using UnityEngine;
     using UnityEngine.EventSystems;
+    using UnityEngine.UI;
 
 #if UNITY_EDITOR
     // Set up touch input propagation while using Instant Preview in the editor.
@@ -36,6 +39,11 @@ namespace GoogleARCore.Examples.HelloAR
     /// </summary>
     public class HelloARController : MonoBehaviour
     {
+        /// <summary>
+        /// The ARCoreSession monobehavior that manages the ARCore session.
+        /// </summary>
+        public ARCoreSession ARSessionManager;
+
         /// <summary>
         /// The first-person camera being used to render the passthrough camera image (i.e. AR
         /// background).
@@ -50,7 +58,7 @@ namespace GoogleARCore.Examples.HelloAR
         /// <summary>
         /// A prefab to place when a raycast from a user touch hits a feature point.
         /// </summary>
-        public GameObject GameObjectPointPrefab;
+//        public GameObject GameObjectPointPrefab;
 
         /// <summary>
         /// The rotation in degrees need to apply to prefab when it is placed.
@@ -63,6 +71,44 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         private bool m_IsQuitting = false;
 
+
+        /// <sumary>
+        /// FIELDS FOR IMAGE PROCESSING
+        /// </sumary>
+
+        /*        /// <summary>
+                /// A toggle that is used to select the low resolution CPU camera configuration.
+                /// </summary>
+                public Toggle LowResConfigToggle;
+
+                /// <summary>
+                /// A toggle that is used to select the high resolution CPU camera configuration.
+                /// </summary>
+                public Toggle HighResConfigToggle; */
+
+        /// <summary>
+        /// A Text box that is used to output the camera intrinsics values.
+        /// </summary>
+        public Text CameraIntrinsicsOutput;
+
+        //    private bool m_UseHighResCPUTexture = false;
+        private bool m_UseHighResCPUTexture = true;
+        private ARCoreSession.OnChooseCameraConfigurationDelegate m_OnChoseCameraConfiguration =
+            null;
+        private int m_HighestResolutionConfigIndex = 0;
+        private int m_LowestResolutionConfigIndex = 0;
+        private bool m_Resolutioninitialized = false;
+        private Text m_ImageTextureToggleText;
+        private float m_RenderingFrameRate = 0f;
+        private float m_RenderingFrameTime = 0f;
+        private int m_FrameCounter = 0;
+        private float m_FramePassedTime = 0.0f;
+        /// <summary>
+        /// The frame rate update interval.
+        /// </summary>
+        private static float s_FrameRateUpdateInterval = 2.0f;
+
+
         /// <summary>
         /// The Unity Awake() method.
         /// </summary>
@@ -71,6 +117,23 @@ namespace GoogleARCore.Examples.HelloAR
             // Enable ARCore to target 60fps camera capture frame rate on supported devices.
             // Note, Application.targetFrameRate is ignored when QualitySettings.vSyncCount != 0.
             Application.targetFrameRate = 60;
+
+            // Lock screen to portrait.
+            Screen.autorotateToLandscapeLeft = false;
+            Screen.autorotateToLandscapeRight = false;
+            Screen.autorotateToPortraitUpsideDown = false;
+            Screen.orientation = ScreenOrientation.Portrait;
+
+            // Register the callback to set camera config before arcore session is enabled.
+            m_OnChoseCameraConfiguration = _ChooseCameraConfiguration;
+            ARSessionManager.RegisterChooseCameraConfigurationCallback(
+                m_OnChoseCameraConfiguration);
+
+            var config = ARSessionManager.SessionConfig;
+            if (config != null)
+            {
+                config.CameraFocusMode = CameraFocusMode.Auto;
+            }
         }
 
         /// <summary>
@@ -79,6 +142,13 @@ namespace GoogleARCore.Examples.HelloAR
         public void Update()
         {
             _UpdateApplicationLifecycle();
+            _UpdateFrameRate();
+
+            /// Update Camera Intrinsics///
+            var cameraIntrinsics = Frame.CameraImage.ImageIntrinsics;
+            string intrinsicsType = "CPU Image";
+            //HelloARController.
+            CameraIntrinsicsOutput.text = _CameraIntrinsicsToString(cameraIntrinsics, intrinsicsType);
 
             // If the player has not touched the screen, we are done with this update.
             Touch touch;
@@ -112,11 +182,11 @@ namespace GoogleARCore.Examples.HelloAR
                 {
                     // Choose the prefab based on the Trackable that got hit.
                     GameObject prefab;
-                    if (hit.Trackable is FeaturePoint)
+/*                    if (hit.Trackable is FeaturePoint)
                     {
                         prefab = GameObjectPointPrefab;
-                    }
-                    else if (hit.Trackable is DetectedPlane)
+                    } */
+                   if (hit.Trackable is DetectedPlane)
                     {
                         DetectedPlane detectedPlane = hit.Trackable as DetectedPlane;
 
@@ -160,6 +230,116 @@ namespace GoogleARCore.Examples.HelloAR
         }
 
         /// <summary>
+        /// Update Frame Rate
+        /// </summary>
+         private void _UpdateFrameRate()
+        {
+            m_FrameCounter++;
+            m_FramePassedTime += Time.deltaTime;
+            if (m_FramePassedTime > s_FrameRateUpdateInterval)
+            {
+                m_RenderingFrameTime = 1000 * m_FramePassedTime / m_FrameCounter;
+                m_RenderingFrameRate = 1000 / m_RenderingFrameTime;
+                m_FramePassedTime = 0f;
+                m_FrameCounter = 0;
+                CamImage.GetCameraImage();
+            }
+        }
+
+        /// <summary>
+        /// Generate string to print the value in CameraIntrinsics.
+        /// </summary>
+        /// <param name="intrinsics">The CameraIntrinsics to generate the string from.</param>
+        /// <param name="intrinsicsType">The string that describe the type of the
+        /// intrinsics.</param>
+        /// <returns>The generated string.</returns>
+        private string _CameraIntrinsicsToString(CameraIntrinsics intrinsics, string intrinsicsType)
+        {
+            float fovX = 2.0f * Mathf.Rad2Deg * Mathf.Atan2(
+                intrinsics.ImageDimensions.x, 2 * intrinsics.FocalLength.x);
+            float fovY = 2.0f * Mathf.Rad2Deg * Mathf.Atan2(
+                intrinsics.ImageDimensions.y, 2 * intrinsics.FocalLength.y);
+
+            string frameRateTime = m_RenderingFrameRate < 1 ? "Calculating..." :
+                string.Format("{0}ms ({1}fps)", m_RenderingFrameTime.ToString("0.0"),
+                    m_RenderingFrameRate.ToString("0.0"));
+
+            string message = string.Format(
+                "Unrotated Camera {4} Intrinsics:{0}  Focal Length: {1}{0}  " +
+                "Principal Point: {2}{0}  Image Dimensions: {3}{0}  " +
+                "Unrotated Field of View: ({5}°, {6}°){0}" +
+                "Render Frame Time: {7}",
+                Environment.NewLine, intrinsics.FocalLength.ToString(),
+                intrinsics.PrincipalPoint.ToString(), intrinsics.ImageDimensions.ToString(),
+                intrinsicsType, fovX, fovY, frameRateTime);
+            return message;
+        }
+
+        /// <summary>
+        /// Select the desired camera configuration.
+        /// If high resolution toggle is checked, select the camera configuration
+        /// with highest cpu image and highest FPS.
+        /// If low resolution toggle is checked, select the camera configuration
+        /// with lowest CPU image and highest FPS.
+        /// </summary>
+        /// <param name="supportedConfigurations">A list of all supported camera
+        /// configuration.</param>
+        /// <returns>The desired configuration index.</returns>
+        private int _ChooseCameraConfiguration(List<CameraConfig> supportedConfigurations)
+        {
+            if (!m_Resolutioninitialized)
+            {
+                m_HighestResolutionConfigIndex = 0;
+                m_LowestResolutionConfigIndex = 0;
+                CameraConfig maximalConfig = supportedConfigurations[0];
+                CameraConfig minimalConfig = supportedConfigurations[0];
+                for (int index = 1; index < supportedConfigurations.Count; index++)
+                {
+                    CameraConfig config = supportedConfigurations[index];
+                    if ((config.ImageSize.x > maximalConfig.ImageSize.x &&
+                         config.ImageSize.y > maximalConfig.ImageSize.y) ||
+                        (config.ImageSize.x == maximalConfig.ImageSize.x &&
+                         config.ImageSize.y == maximalConfig.ImageSize.y &&
+                         config.MaxFPS > maximalConfig.MaxFPS))
+                    {
+                        m_HighestResolutionConfigIndex = index;
+                        maximalConfig = config;
+                    }
+
+                    if ((config.ImageSize.x < minimalConfig.ImageSize.x &&
+                         config.ImageSize.y < minimalConfig.ImageSize.y) ||
+                        (config.ImageSize.x == minimalConfig.ImageSize.x &&
+                         config.ImageSize.y == minimalConfig.ImageSize.y &&
+                         config.MaxFPS > minimalConfig.MaxFPS))
+                    {
+                        m_LowestResolutionConfigIndex = index;
+                        minimalConfig = config;
+                    }
+                }
+
+         /*       LowResConfigToggle.GetComponentInChildren<Text>().text = string.Format(
+                    "Low Resolution CPU Image ({0} x {1}), Target FPS: ({2} - {3}), " +
+                    "Depth Sensor Usage: {4}",
+                    minimalConfig.ImageSize.x, minimalConfig.ImageSize.y,
+                    minimalConfig.MinFPS, minimalConfig.MaxFPS, minimalConfig.DepthSensorUsage);
+                HighResConfigToggle.GetComponentInChildren<Text>().text = string.Format(
+                    "High Resolution CPU Image ({0} x {1}), Target FPS: ({2} - {3}), " +
+                    "Depth Sensor Usage: {4}",
+                    maximalConfig.ImageSize.x, maximalConfig.ImageSize.y,
+                    maximalConfig.MinFPS, maximalConfig.MaxFPS, maximalConfig.DepthSensorUsage);
+                    */
+                m_Resolutioninitialized = true;
+            }
+
+            if (m_UseHighResCPUTexture)
+            {
+                return m_HighestResolutionConfigIndex;
+            }
+
+            return m_LowestResolutionConfigIndex;
+        }
+
+        /// <summary>
         /// Check and update the application lifecycle.
         /// </summary>
         private void _UpdateApplicationLifecycle()
@@ -167,6 +347,7 @@ namespace GoogleARCore.Examples.HelloAR
             // Exit the app when the 'back' button is pressed.
             if (Input.GetKey(KeyCode.Escape))
             {
+                ExportImages();
                 Application.Quit();
             }
 
@@ -203,10 +384,27 @@ namespace GoogleARCore.Examples.HelloAR
         }
 
         /// <summary>
+        /// Export Images (SAVE TO DISK)
+        /// </summary>
+        private void ExportImages()
+        {
+            var path = Application.persistentDataPath;
+            for (var i = 0; i < CamImage.AllData.Count; i++)
+            {
+                byte[] imOut = CamImage.AllData[i];
+                string fileName = "/IMG" + i + ".jpg";
+                File.WriteAllBytes(path + fileName, imOut);
+                string messge = "Succesfully Saved Image To " + path + "\n";
+                Debug.Log(messge);
+            }
+        }
+
+        /// <summary>
         /// Actually quit the application.
         /// </summary>
         private void _DoQuit()
         {
+            ExportImages();
             Application.Quit();
         }
 

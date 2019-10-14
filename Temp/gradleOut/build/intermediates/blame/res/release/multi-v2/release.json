@@ -89,28 +89,6 @@
             ]
         },
         {
-            "outputFile": "/Users/Viv/Unity/AR12/Temp/gradleOut/build/intermediates/res/merged/release/values-it_values-it.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/Viv/.gradle/caches/transforms-2/files-2.1/b6eca1605729aef1aec859f5671920a6/res/values-it/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8",
-                        "startColumns": "0,0,0,0,0",
-                        "startOffsets": "190,238,289,419,553",
-                        "endColumns": "47,50,129,133,89",
-                        "endOffsets": "237,288,418,552,642"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "55,107,162,296,434",
-                        "endColumns": "51,54,133,137,93",
-                        "endOffsets": "102,157,291,429,523"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/Viv/Unity/AR12/Temp/gradleOut/build/intermediates/res/merged/release/values-es-rUS_values-es-rUS.arsc.flat",
             "map": [
                 {
@@ -128,6 +106,28 @@
                         "startOffsets": "55,108,164,292,428",
                         "endColumns": "52,55,127,135,92",
                         "endOffsets": "103,159,287,423,516"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/Viv/Unity/AR12/Temp/gradleOut/build/intermediates/res/merged/release/values-it_values-it.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/Viv/.gradle/caches/transforms-2/files-2.1/b6eca1605729aef1aec859f5671920a6/res/values-it/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "0,0,0,0,0",
+                        "startOffsets": "190,238,289,419,553",
+                        "endColumns": "47,50,129,133,89",
+                        "endOffsets": "237,288,418,552,642"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,107,162,296,434",
+                        "endColumns": "51,54,133,137,93",
+                        "endOffsets": "102,157,291,429,523"
                     }
                 }
             ]
@@ -221,28 +221,6 @@
             ]
         },
         {
-            "outputFile": "/Users/Viv/Unity/AR12/Temp/gradleOut/build/intermediates/res/merged/release/values-my_values-my.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/Viv/.gradle/caches/transforms-2/files-2.1/b6eca1605729aef1aec859f5671920a6/res/values-my/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8",
-                        "startColumns": "0,0,0,0,0",
-                        "startOffsets": "190,240,293,430,570",
-                        "endColumns": "49,52,136,139,104",
-                        "endOffsets": "239,292,429,569,674"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "55,109,166,307,451",
-                        "endColumns": "53,56,140,143,108",
-                        "endOffsets": "104,161,302,446,555"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/Viv/Unity/AR12/Temp/gradleOut/build/intermediates/res/merged/release/values-b+sr+Latn_values-b+sr+Latn.arsc.flat",
             "map": [
                 {
@@ -260,6 +238,28 @@
                         "startOffsets": "55,106,160,276,394",
                         "endColumns": "50,53,115,117,88",
                         "endOffsets": "101,155,271,389,478"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/Viv/Unity/AR12/Temp/gradleOut/build/intermediates/res/merged/release/values-my_values-my.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/Viv/.gradle/caches/transforms-2/files-2.1/b6eca1605729aef1aec859f5671920a6/res/values-my/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "0,0,0,0,0",
+                        "startOffsets": "190,240,293,430,570",
+                        "endColumns": "49,52,136,139,104",
+                        "endOffsets": "239,292,429,569,674"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,109,166,307,451",
+                        "endColumns": "53,56,140,143,108",
+                        "endOffsets": "104,161,302,446,555"
                     }
                 }
             ]
@@ -776,9 +776,11 @@
                 {
                     "source": "/Users/Viv/.gradle/caches/transforms-2/files-2.1/b6eca1605729aef1aec859f5671920a6/res/values/values.xml",
                     "from": {
-                        "startLines": "-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1"
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "0,0,0,0,0",
+                        "startOffsets": "161,208,259,381,503",
+                        "endColumns": "46,50,121,121,83",
+                        "endOffsets": "207,258,380,502,586"
                     },
                     "to": {
                         "startLines": "2,3,4,5,6",
@@ -791,9 +793,12 @@
                 {
                     "source": "/Users/Viv/Unity/AR12/Temp/gradleOut/src/main/res/values/styles.xml",
                     "from": {
-                        "startLines": "-1,-1,-1",
-                        "startColumns": "-1,-1,-1",
-                        "startOffsets": "-1,-1,-1"
+                        "startLines": "5,2,7",
+                        "startColumns": "0,0,0",
+                        "startOffsets": "190,53,288",
+                        "endLines": "6,4,10",
+                        "endColumns": "8,8,8",
+                        "endOffsets": "286,188,513"
                     },
                     "to": {
                         "startLines": "9,11,14",
@@ -807,11 +812,11 @@
                 {
                     "source": "/Users/Viv/Unity/AR12/Temp/gradleOut/src/main/res/values/strings.xml",
                     "from": {
-                        "startLines": "2,-1",
-                        "startColumns": "2,-1",
-                        "startOffsets": "53,-1",
-                        "endColumns": "41,-1",
-                        "endOffsets": "92,-1"
+                        "startLines": "2,3",
+                        "startColumns": "2,2",
+                        "startOffsets": "53,95",
+                        "endColumns": "41,65",
+                        "endOffsets": "92,158"
                     },
                     "to": {
                         "startLines": "7,8",

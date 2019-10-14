@@ -1,13 +1,15 @@
 ﻿<Properties StartupConfiguration="{821ED78C-8D71-F70F-6A83-B88AC5742900}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/OpenCV+Unity/Demo/Identifiy_Contours_by_Shape/ContoursByShapeScript.cs">
     <Files>
-      <File FileName="Assets/GoogleARCore/Examples/ComputerVision/Scripts/TextureReader.cs" Line="1" Column="1" />
-      <File FileName="Assets/GoogleARCore/Examples/ComputerVision/Scripts/TextureReaderApi.cs" Line="1" Column="1" />
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/HelloARController.cs" Line="117" Column="56" />
-      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/PointcloudVisualizer.cs" Line="61" Column="57" />
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/EntryScript.cs" Line="7" Column="39" />
-      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs" Line="1" Column="1" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/HelloARController.cs" Line="134" Column="63" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/PointcloudVisualizer.cs" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/EntryScript.cs" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneGenerator.cs" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs" Line="95" Column="46" />
+      <File FileName="Assets/GoogleARCore/Examples/ComputerVision/Scripts/ComputerVisionController.cs" Line="316" Column="1" />
+      <File FileName="Assets/OpenCV+Unity/Demo/Marker_Detector/MarkerDetector.cs" Line="1" Column="1" />
+      <File FileName="Assets/OpenCV+Unity/Demo/Identifiy_Contours_by_Shape/ContoursByShapeScript.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,15 +19,26 @@
               <Node name="GoogleARCore" expanded="True">
                 <Node name="Examples" expanded="True">
                   <Node name="Common" expanded="True">
-                    <Node name="Scripts" expanded="True">
-                      <Node name="DetectedPlaneVisualizer.cs" selected="True" />
-                    </Node>
+                    <Node name="Scripts" expanded="True" />
+                  </Node>
+                  <Node name="ComputerVision" expanded="True">
+                    <Node name="Scripts" expanded="True" />
                   </Node>
                   <Node name="HelloAR" expanded="True">
                     <Node name="Scripts" expanded="True" />
                   </Node>
                 </Node>
-                <Node name="SDK" expanded="True">
+              </Node>
+              <Node name="OpenCV+Unity" expanded="True">
+                <Node name="Demo" expanded="True">
+                  <Node name="Document_Scanner" expanded="True">
+                    <Node name="Scripts" expanded="True" />
+                  </Node>
+                  <Node name="Face_Detector" expanded="True" />
+                  <Node name="Identifiy_Contours_by_Shape" expanded="True">
+                    <Node name="ContoursByShapeScript.cs" selected="True" />
+                  </Node>
+                  <Node name="Marker_Detector" expanded="True" />
                   <Node name="Scripts" expanded="True" />
                 </Node>
               </Node>
@@ -37,7 +50,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d5a2af7a-8f48-4426-bc49-c08400d93c23" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="322091a9-a4b5-4505-a0a9-542a4419b8d5" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
