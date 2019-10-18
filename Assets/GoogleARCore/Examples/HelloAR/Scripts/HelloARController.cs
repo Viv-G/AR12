@@ -405,27 +405,37 @@ namespace GoogleARCore.Examples.HelloAR
             }
         } */
 
-        private void ExportImages()
+        public void ExportImages()
         {
+            /// Write Camera intrinsics to text file
             var path = Application.persistentDataPath;
-            Texture2D result;
             StreamWriter sr = new StreamWriter(path + @"/intrinsics.txt");
-           // sr = new StreamWriter(path + "intrinsics.txt");
             sr.WriteLine(CameraIntrinsicsOutput.text);
             Debug.Log(CameraIntrinsicsOutput.text);
             sr.Close();
+            ConExit.ConnectOut();
+            ConExit.SendArraySize(CamImage.AllData.Count);
+            CameraIntrinsicsOutput.text = "Sending " + CamImage.AllData.Count + "Images";
+            // Loop through Mat List, Add to Texture and Save.
             for (var i = 0; i < CamImage.AllData.Count; i++)
             {
                 Mat imOut = CamImage.AllData[i];
-                result = Unity.MatToTexture(imOut);
+                Texture2D result = Unity.MatToTexture(imOut);
                 result.Apply();
 
                 byte[] im = result.EncodeToJPG(100);
+                ConExit.SendIM(im);
+
                 string fileName = "/IMG" + i + ".jpg";
                 File.WriteAllBytes(path + fileName, im);
-                string messge = "Succesfully Saved Image To " + path + "\n";
-                Debug.Log(messge);
+                CameraIntrinsicsOutput.text = "Succesfully Sent Image " + i + "\n Remaining: " + (CamImage.AllData.Count - i);
+                //Debug.Log(messge);
+                Destroy(result);
             }
+            CameraIntrinsicsOutput.text = "Success! Exciting...";
+            Connection.s.Close();
+            ConExit.sOut.Close();
+            Application.Quit();
         }
 
         /// <summary>
@@ -434,6 +444,8 @@ namespace GoogleARCore.Examples.HelloAR
         private void _DoQuit()
         {
             ExportImages();
+            Connection.s.Close();
+            ConExit.sOut.Close();
             Application.Quit();
         }
 

@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - GoogleARCore.Examples.Common.PointcloudVisualizer
     - GoogleARCore.Examples.EntryScript
     - GoogleARCore.Examples.HelloAR.CamImage
+    - GoogleARCore.Examples.HelloAR.ConExit
     - GoogleARCore.Examples.HelloAR.Connection
     - GoogleARCore.Examples.HelloAR.HelloARController
     UnityEditor.TestRunner.dll:
@@ -148,6 +149,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12644}
     - Class: 114
       Script: {instanceID: 12970}
+    - Class: 114
+      Script: {instanceID: 16604}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -217,12 +220,6 @@ ScriptsOnlyBuild:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: CameraScaler
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
     namespaceName: GoogleARCore.Examples.Common
     className: SafeAreaScaler
   - hash:
@@ -267,12 +264,6 @@ ScriptsOnlyBuild:
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkIdentity
-  - hash:
-      serializedVersion: 2
-      Hash: 43a769f8d4267784128d36edda3f10c8
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: FaceDetectorScene
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -419,12 +410,6 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: DocumentScannerScript
-  - hash:
-      serializedVersion: 2
       Hash: d251bf88db6c95a6b1aa0b69298da9ef
     assemblyName: UnityEngine.SpatialTracking.dll
     namespaceName: UnityEngine.SpatialTracking
@@ -569,22 +554,10 @@ ScriptsOnlyBuild:
     className: PointcloudVisualizer
   - hash:
       serializedVersion: 2
-      Hash: 6c0e8d296af8837cc1162dbeb5bbf284
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: TrackingScript
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
-  - hash:
-      serializedVersion: 2
-      Hash: 8566fcc93050d6c4af847074c2e55a7b
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: GrayscaleScript
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -621,12 +594,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
-  - hash:
-      serializedVersion: 2
-      Hash: 8566fcc93050d6c4af847074c2e55a7b
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: MarkerDetector
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -737,12 +704,6 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: DocumentScannerLobby
-  - hash:
-      serializedVersion: 2
       Hash: 46e31b10dbb047f5b3aadcd320535b92
     assemblyName: Assembly-CSharp.dll
     namespaceName: GoogleARCore
@@ -761,12 +722,6 @@ ScriptsOnlyBuild:
     className: TranslationManipulator
   - hash:
       serializedVersion: 2
-      Hash: a4c10d359f353728d68c46b1747af230
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: LobbyScript
-  - hash:
-      serializedVersion: 2
       Hash: f6ce517cfe441140f4658698ab4831e5
     assemblyName: Assembly-CSharp.dll
     namespaceName: GoogleARCore.Examples
@@ -777,12 +732,6 @@ ScriptsOnlyBuild:
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: 6c0e8d296af8837cc1162dbeb5bbf284
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: LiveSketchScript
   - hash:
       serializedVersion: 2
       Hash: b640dcae08889dea4d87e95a455bbf6b
@@ -827,22 +776,10 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 8566fcc93050d6c4af847074c2e55a7b
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: ContoursByShapeScript
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: GoogleARCore.Examples.Common
     className: DetectedPlaneVisualizer
-  - hash:
-      serializedVersion: 2
-      Hash: d686a7279d03eb7ea9a2f4899603b958
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: AlphabetOCRScene
   - hash:
       serializedVersion: 2
       Hash: 1db723b554a361a812257e508051085f
@@ -897,12 +834,6 @@ ScriptsOnlyBuild:
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkAnimator
-  - hash:
-      serializedVersion: 2
-      Hash: 25759fed02b9b9bec6c0f2b855ae2642
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OpenCvSharp.Demo
-    className: FaceRecognizerScene
   - hash:
       serializedVersion: 2
       Hash: a2ab9640b0dfa728889d9a384755e020
@@ -1023,6 +954,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: GoogleARCore.Examples.HelloAR
+    className: ConExit
   platform: 13
   scenePathNames:
   - Assets/GoogleARCore/Examples/HelloAR/Scenes/Entry.unity

@@ -1,24 +1,19 @@
 ﻿namespace GoogleARCore.Examples.HelloAR
 {
     using System;
-    using System.IO;
     using System.Collections.Generic;
     using GoogleARCore;
     using UnityEngine;
-    using UnityEngine.UI;
     using OpenCvSharp;
     using System.Runtime.InteropServices;
 
     public class CamImage : MonoBehaviour
     {
-     
-        private static int mTrack;
 
         public static List<Mat> AllData = new List<Mat>();
 
         public static void GetCameraImage()
         {
-              Texture2D result;
 
             // Use using to make sure that C# disposes of the CameraImageBytes afterwards
             using (CameraImageBytes camBytes = Frame.CameraImage.AcquireCameraImageBytes())
@@ -27,11 +22,8 @@
                 // If acquiring failed, return null
                 if (!camBytes.IsAvailable)
                 {
-                    Debug.LogWarning("camBytes not available");
                     return;
                 }
-
-                mTrack++;
 
                 // To save a YUV_420_888 image, you need 1.5*pixelCount bytes.
                 // I will explain later, why.
@@ -54,17 +46,11 @@
                     }
                 }
 
-                // Create the output byte array. RGB is three channels, therefore
-                // we need 3 times the pixel count
-            //    byte[] RGBimage = new byte[camBytes.Width * camBytes.Height * 3];
-
                 // GCHandles help us "pin" the arrays in the memory, so that we can
                 // pass them to the C++ code.
                 GCHandle pinnedArray = GCHandle.Alloc(YUVimage, GCHandleType.Pinned);
-           //     GCHandle RGBhandle = GCHandle.Alloc(RGBimage, GCHandleType.Pinned);
 
                 IntPtr pointerYUV = pinnedArray.AddrOfPinnedObject();
-            //    IntPtr pointerRGB = pinnedArray.AddrOfPinnedObject();
 
                 Mat input = new Mat(camBytes.Height + camBytes.Height / 2, camBytes.Width, MatType.CV_8UC1, pointerYUV);
                 Mat output = new Mat(camBytes.Height, camBytes.Width, MatType.CV_8UC3);
@@ -75,25 +61,7 @@
                 Cv2.Transpose(output, output);
                 Cv2.Flip(output, output, FlipMode.Y);
 
-             //   byte[] buf = output.ToBytes(".png");
-
-              /*  //byte[] im = null;
-                int[] prms = null;
-                //   string ext = ".JPEG";
-
-                byte[] buf;// = output.ImEncode(".png");
-                           // OutputArr = InputArray.Create(output);
-                var path = Application.persistentDataPath;
-                string fileName = "/IMG" + 1 + ".jpg";
-                Cv2.ImWrite(path + fileName, output);
-              // Cv2.ImEncode(".jpg", output, out buf, prms); */
-
-            /*---   result = Unity.MatToTexture(output);
-               result.Apply(); 
-
-                byte[] im = result.EncodeToJPG(100);---- */
                AllData.Add(output);
-               // Destroy(result);
                pinnedArray.Free();
             }
             

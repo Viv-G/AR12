@@ -1,12 +1,14 @@
 ﻿<Properties StartupConfiguration="{821ED78C-8D71-F70F-6A83-B88AC5742900}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs">
     <Files>
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/HelloARController.cs" Line="400" Column="10" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/HelloARController.cs" Line="443" Column="23" />
       <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/PointcloudVisualizer.cs" />
       <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/EntryScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneGenerator.cs" />
-      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs" />
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs" Line="71" Column="17" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneGenerator.cs" Line="1" Column="1" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs" Line="1" Column="1" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs" Line="67" Column="13" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/ConExit.cs" Line="16" Column="60" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/Connection.cs" Line="14" Column="44" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,14 +31,20 @@
                 </Node>
               </Node>
               <Node name="OpenCV+Unity" expanded="True">
-                <Node name="Demo" expanded="True">
-                  <Node name="Document_Scanner" expanded="True">
-                    <Node name="Scripts" expanded="True" />
+                <Node name="Assets" expanded="True">
+                  <Node name="Scripts" expanded="True">
+                    <Node name="DLib" expanded="True" />
+                    <Node name="OpenCvSharp" expanded="True">
+                      <Node name="Cv2" expanded="True" />
+                    </Node>
                   </Node>
-                  <Node name="Face_Detector" expanded="True" />
-                  <Node name="Identifiy_Contours_by_Shape" expanded="True" />
-                  <Node name="Marker_Detector" expanded="True" />
-                  <Node name="Scripts" expanded="True" />
+                </Node>
+                <Node name="Plugins" expanded="True">
+                  <Node name="macOS" expanded="True">
+                    <Node name="OpenCvSharpExtern.bundle" expanded="True">
+                      <Node name="Contents" expanded="True" />
+                    </Node>
+                  </Node>
                 </Node>
               </Node>
             </Node>

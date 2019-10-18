@@ -88,6 +88,7 @@
     <Compile Include="Assets\GoogleARCore\Examples\ComputerVision\Scripts\TextureReader.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\ComputerVision\Scripts\TextureReaderApi.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\CamImage.cs" />
+    <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\ConExit.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\Connection.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\EntryScript.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\HelloARController.cs" />
@@ -646,26 +647,7 @@
     <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorPoint.cs" />
     <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorPoint2f.cs" />
     <Compile Include="Assets\OpenCV+Unity\Assets\Scripts\OpenCvSharp\Vector\VectorOfVectorVec2i.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Document_Scanner\Scripts\DocumentScannerLobby.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Document_Scanner\Scripts\DocumentScannerScript.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Document_Scanner\Scripts\PaperScanner.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Face_Detector\FaceDetectorScene.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Face_Recognizer\FaceRecognizerScene.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Grayscale\GrayscaleScript.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Identifiy_Contours_by_Shape\ContoursByShapeScript.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\LiveSketch_WebCam\LiveSketchScript.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Lobby\LobbyScript.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Marker_Detector\MarkerDetector.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\OCR.Alphabet\AlphabetOCR.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\OCR.Alphabet\AlphabetOCRScene.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\CameraScaler.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\DataStabilizer.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\DetectedFace.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\FaceProcessor.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Scripts\WebCamera.cs" />
-    <Compile Include="Assets\OpenCV+Unity\Demo\Tracking\TrackingScript.cs" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\PlaneGrid.shader" />
-    <None Include="Assets\OpenCV+Unity\Demo\Face_Detector\haarcascade_frontalface_default.xml" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\MobileDiffuseWithLightEstimation.shader" />
     <None Include="Assets\GoogleARCore\SDK\Materials\ARBackground.shader" />
     <None Include="Assets\OpenCV+Unity\mcs.rsp" />
@@ -676,13 +658,10 @@
     <None Include="Assets\OpenCV+Unity\Documentation\OpenCV+Unity_Notes.txt" />
     <None Include="Assets\smcs.rsp" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\PointCloud.shader" />
-    <None Include="Assets\OpenCV+Unity\Demo\Face_Detector\haarcascade_eye.xml" />
     <None Include="Assets\OpenCV+Unity\gmcs.rsp" />
     <None Include="Assets\GoogleARCore\Examples\ComputerVision\Materials\EdgeDetectionBackground.shader" />
-    <None Include="Assets\OpenCV+Unity\Demo\Face_Recognizer\face-recognizer.xml" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\MobileSpecularWithLightEstimation.shader" />
     <None Include="Assets\OpenCV+Unity\Documentation\Third-Party Licenses.txt" />
-    <None Include="Assets\OpenCV+Unity\Demo\Face_Detector\haarcascade_eye_tree_eyeglasses.xml" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/Viv/Unity/AR12/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
