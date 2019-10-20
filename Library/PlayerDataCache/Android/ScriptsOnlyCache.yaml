@@ -24,10 +24,15 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   sceneClasses:
     Assets/GoogleARCore/Examples/HelloAR/Scenes/Entry.unity:
     - Class: 1
@@ -55,23 +60,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9734}
     - Class: 114
-      Script: {instanceID: 10054}
+      Script: {instanceID: 10050}
     - Class: 114
-      Script: {instanceID: 10126}
+      Script: {instanceID: 10056}
     - Class: 114
-      Script: {instanceID: 10792}
+      Script: {instanceID: 10120}
     - Class: 114
-      Script: {instanceID: 11304}
+      Script: {instanceID: 10634}
     - Class: 114
-      Script: {instanceID: 11506}
+      Script: {instanceID: 10784}
     - Class: 114
-      Script: {instanceID: 11814}
+      Script: {instanceID: 11144}
     - Class: 114
-      Script: {instanceID: 12104}
+      Script: {instanceID: 11296}
     - Class: 114
-      Script: {instanceID: 12312}
+      Script: {instanceID: 11492}
     - Class: 114
-      Script: {instanceID: 12970}
+      Script: {instanceID: 11798}
+    - Class: 114
+      Script: {instanceID: 12082}
+    - Class: 114
+      Script: {instanceID: 12286}
+    - Class: 114
+      Script: {instanceID: 12904}
+    - Class: 114
+      Script: {instanceID: 12936}
+    - Class: 114
+      Script: {instanceID: 12960}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -114,43 +129,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9734}
     - Class: 114
-      Script: {instanceID: 10054}
+      Script: {instanceID: 10050}
     - Class: 114
-      Script: {instanceID: 10126}
+      Script: {instanceID: 10120}
     - Class: 114
-      Script: {instanceID: 10672}
+      Script: {instanceID: 10664}
     - Class: 114
-      Script: {instanceID: 10686}
+      Script: {instanceID: 10678}
     - Class: 114
-      Script: {instanceID: 10792}
+      Script: {instanceID: 10784}
     - Class: 114
-      Script: {instanceID: 10826}
+      Script: {instanceID: 10818}
     - Class: 114
-      Script: {instanceID: 10874}
+      Script: {instanceID: 10866}
     - Class: 114
-      Script: {instanceID: 11048}
+      Script: {instanceID: 11040}
     - Class: 114
-      Script: {instanceID: 11304}
+      Script: {instanceID: 11252}
     - Class: 114
-      Script: {instanceID: 11506}
+      Script: {instanceID: 11296}
     - Class: 114
-      Script: {instanceID: 11900}
+      Script: {instanceID: 11492}
     - Class: 114
-      Script: {instanceID: 12016}
+      Script: {instanceID: 11884}
     - Class: 114
-      Script: {instanceID: 12312}
+      Script: {instanceID: 11996}
     - Class: 114
-      Script: {instanceID: 12316}
+      Script: {instanceID: 12286}
     - Class: 114
-      Script: {instanceID: 12462}
+      Script: {instanceID: 12290}
     - Class: 114
-      Script: {instanceID: 12532}
+      Script: {instanceID: 12432}
     - Class: 114
-      Script: {instanceID: 12644}
+      Script: {instanceID: 12500}
     - Class: 114
-      Script: {instanceID: 12970}
+      Script: {instanceID: 12612}
     - Class: 114
-      Script: {instanceID: 16604}
+      Script: {instanceID: 12936}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -446,7 +461,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 754289a45af3e1928c42f58b239a838e
+      Hash: b6a35cb3ed6f2647ad67cae5a888527e
     assemblyName: Assembly-CSharp.dll
     namespaceName: GoogleARCore.Examples.HelloAR
     className: HelloARController
@@ -536,6 +551,12 @@ ScriptsOnlyBuild:
     className: NetworkCallbacks
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: GoogleARCore.Examples.HelloAR
+    className: ConExit
+  - hash:
+      serializedVersion: 2
       Hash: 21e871d89bbce53c038fc75ad1b7c7f3
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
@@ -548,7 +569,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: a0457f073a510445aed3c91d5dfe4227
+      Hash: 9c4a3a66ad1184d8ac9dbeef27eda6ea
     assemblyName: Assembly-CSharp.dll
     namespaceName: GoogleARCore.Examples.Common
     className: PointcloudVisualizer
@@ -954,12 +975,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: GoogleARCore.Examples.HelloAR
-    className: ConExit
   platform: 13
   scenePathNames:
   - Assets/GoogleARCore/Examples/HelloAR/Scenes/Entry.unity

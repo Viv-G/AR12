@@ -74,7 +74,7 @@ namespace GoogleARCore.Examples.Common
                     "Point Color",
                     _GetTooltip(pointcloudVisualizerScript, "PointColor")));
 
-            EditorGUILayout.PropertyField(
+/*            EditorGUILayout.PropertyField(
                 m_DefaultSize,
                 new GUIContent(
                     "Default Size",
@@ -84,7 +84,7 @@ namespace GoogleARCore.Examples.Common
                 m_MaxPointCount,
                 new GUIContent(
                     "Max Point Count",
-                    _GetTooltip(pointcloudVisualizerScript, "m_MaxPointCount")));
+                    _GetTooltip(pointcloudVisualizerScript, "m_MaxPointCount"))); */
 
             EditorGUILayout.PropertyField(
                 m_EnablePopAnimation,

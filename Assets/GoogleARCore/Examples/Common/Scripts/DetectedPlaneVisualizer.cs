@@ -100,6 +100,11 @@ namespace GoogleARCore.Examples.Common
         private void _UpdateMeshIfNeeded()
         {
             m_DetectedPlane.GetBoundaryPolygon(m_MeshVertices);
+          /*  float pt2 = HelloAR.HelloARController.maxVals.z;
+            float pt1 = HelloAR.HelloARController.minVals.x;
+            float pt3 = HelloAR.HelloARController.maxVals.x;
+            Vector3 boundVec = new Vector3(pt1, pt2, pt3);
+            m_MeshVertices = boundVec; */
 
             if (_AreVerticesListsEqual(m_PreviousFrameMeshVertices, m_MeshVertices))
             {

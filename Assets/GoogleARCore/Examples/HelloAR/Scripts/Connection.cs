@@ -22,10 +22,31 @@
         public static void Connect(string Host)
         {
             Debug.Log("Establishing Connection to " + Host);
-            s.Connect(Host, port);
-            Debug.Log("Connection established \n");
-            if (s == null)
-                Debug.LogError("Connection failed");
+            try
+            {
+                s.Connect(Host, port);
+                if (s.Connected)
+                {
+                    Debug.Log("Connected!");
+                }
+            }
+            catch (SocketException e)
+            {
+                // 10035 == WSAEWOULDBLOCK
+                if (e.NativeErrorCode.Equals(10056))
+                {
+                    Debug.LogError("Connection Already Established \n");
+                    Application.Quit();
+                    return;
+                }
+                else
+                {
+                    string errMessage = "Disconnected: error code: " + e.NativeErrorCode;
+                    Debug.LogError(errMessage);
+                    return;
+                }
+            }
+
         }
 
         public static void WriteString(int NPoints, string pointBuffer)

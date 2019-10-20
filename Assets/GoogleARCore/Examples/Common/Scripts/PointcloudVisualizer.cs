@@ -57,14 +57,14 @@ namespace GoogleARCore.Examples.Common
         /// <summary>
         /// The maximum number of points to show on the screen.
         /// </summary>
-        [Tooltip("The maximum number of points to show on the screen.")]
-        [SerializeField] private int m_MaxPointCount = 1000;
+       // [Tooltip("The maximum number of points to show on the screen.")]
+        [SerializeField] private static int m_MaxPointCount = 1000;
 
         /// <summary>
         /// The default size of the points.
         /// </summary>
-        [Tooltip("The default size of the points.")]
-        [SerializeField] private int m_DefaultSize = 10;
+        //[Tooltip("The default size of the points.")]
+        [SerializeField] private static int m_DefaultSize = 10;
 
         /// <summary>
         /// The maximum size that the points will have when they pop.
@@ -115,9 +115,9 @@ namespace GoogleARCore.Examples.Common
         /// <summary>
         /// The cached feature points.
         /// </summary>
-        private LinkedList<PointInfo> m_CachedPoints;
+        private static LinkedList<PointInfo> m_CachedPoints;
 
-        /// <summary>
+    /*    /// <summary>
         /// Current Camera Pose
         /// </summary>
         public Pose curPose = Pose.identity;
@@ -135,13 +135,13 @@ namespace GoogleARCore.Examples.Common
         /// <summary>
         /// Min values for bounding box
         /// </summary>
-        public static Vector3 minVals = new Vector3(-0.75f, -1f, 0.2f);
+        public static Vector3 minVals = new Vector3(-0.25f, -1f, 0.1f);
 
 
         /// <summary>
         /// Max values for bounding box
         /// </summary>
-        public static Vector3 maxVals = new Vector3(0.75f, 0.1f, 1.5f);
+        public static Vector3 maxVals = new Vector3(0.25f, 0.1f, .75f);
 
         /// <summary>
         /// Default Confidence Value
@@ -149,7 +149,7 @@ namespace GoogleARCore.Examples.Common
         public static float setConf = 0.25f;
 
         public static float Dplane;
-
+*/
         /// <summary>
         /// The Unity Start() method.
         /// </summary>
@@ -219,12 +219,12 @@ namespace GoogleARCore.Examples.Common
                             _AddAllPointsToCache();
                         } */
 
-            ExportMeshPoints();
+            //ExportMeshPoints();
 
             _UpdateMesh();
         }
 
-        public void ExportMeshPoints()
+        /* public void ExportMeshPoints()
         {
             string buff = "";
             m_Track = 0;
@@ -263,7 +263,7 @@ namespace GoogleARCore.Examples.Common
                 }
                 
             }
-        }
+        } */
 
 
 
@@ -316,7 +316,7 @@ namespace GoogleARCore.Examples.Common
                     Vector3 point = Frame.PointCloud.GetPointAsStruct(
                         Random.Range(0, Frame.PointCloud.PointCount - 1));
 
-                    _AddPointToCache(point);
+                    AddPointToCache(point);
                 }
             }
         }
@@ -330,7 +330,7 @@ namespace GoogleARCore.Examples.Common
             {
                 for (int i = 0; i < Frame.PointCloud.PointCount; i++)
                 {
-                    _AddPointToCache(Frame.PointCloud.GetPointAsStruct(i));
+                    AddPointToCache(Frame.PointCloud.GetPointAsStruct(i));
                 }
             }
         }
@@ -339,7 +339,7 @@ namespace GoogleARCore.Examples.Common
         /// Adds the specified point to cache.
         /// </summary>
         /// <param name="point">A feature point to be added.</param>
-        private void _AddPointToCache(Vector3 point)
+        public static void AddPointToCache(Vector3 point)
         {
             if (m_CachedPoints.Count >= m_MaxPointCount)
             {

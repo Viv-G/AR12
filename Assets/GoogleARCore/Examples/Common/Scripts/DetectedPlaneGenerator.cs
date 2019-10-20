@@ -40,12 +40,6 @@ namespace GoogleARCore.Examples.Common
         /// </summary>
         private List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
 
-        /// <summary>
-        /// PLANE CENTER AND NORMAL OF PLANE
-        /// 
-        /// </summary>
-        public static Vector3 PlaneCenterSend = new Vector3();
-        public static Vector3 PlaneNormalSend = new Vector3();
 
         /// <summary>
         /// The Unity Update method.
@@ -60,48 +54,20 @@ namespace GoogleARCore.Examples.Common
 
             // Iterate over planes found in this frame and instantiate corresponding GameObjects to
             // visualize them.
-            Session.GetTrackables<DetectedPlane>(m_NewPlanes, TrackableQueryFilter.New);
-            for (int i = 0; i < m_NewPlanes.Count; i++)
+            if (!HelloAR.HelloARController.planeFlag)
             {
-                GameObject planeObject =
-                    Instantiate(DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
-
-           /*         Vector3 m_PlaneCenter = m_NewPlanes[i].CenterPose.position;
-                    Vector3 planeNormal = m_NewPlanes[i].CenterPose.rotation * Vector3.up;
-                if (i == 0)
+                Session.GetTrackables<DetectedPlane>(m_NewPlanes, TrackableQueryFilter.New);
+                for (int i = 0; i < m_NewPlanes.Count; i++)
                 {
-                    PlaneCenterSend = m_PlaneCenter;
-                    PlaneNormalSend = planeNormal;
+                    GameObject planeObject =
+                        Instantiate(DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
+
+                    // Instantiate a plane visualization prefab and set it to track the new plane. The
+                    // transform is set to the origin with an identity rotation since the mesh for our
+                    // prefab is updated in Unity World coordinates.
+
+                    planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
                 }
-
-                
-                 if(m_PlaneCenter.y < PlaneCenterSend.y)
-                    {
-                        PlaneCenterSend = m_PlaneCenter;
-                        PlaneNormalSend = planeNormal;
-                    double Aeq = PlaneNormalSend.x;
-                    double Beq = PlaneNormalSend.y;
-                    double Ceq = PlaneNormalSend.z;
-                    double Deq = (PlaneNormalSend.x * - PlaneCenterSend.x) + (PlaneNormalSend.y * -PlaneCenterSend.y) + (PlaneNormalSend.z * -PlaneCenterSend.z);
-                    
-                 //   string message = "PLANE EQUATION IS: " + Aeq + " , " + Beq + " , " + Ceq + " , " + Deq + "\n";
-                 //   Debug.Log(message);
-
-                    }
-
-                double Aeq = PlaneNormalSend.x;
-                double Beq = PlaneNormalSend.y;
-                double Ceq = PlaneNormalSend.z;
-                double Deq = (PlaneNormalSend.x * -PlaneCenterSend.x) + (PlaneNormalSend.y * -PlaneCenterSend.y) + (PlaneNormalSend.z * -PlaneCenterSend.z);
-
-                string message = "PLANE EQUATION IS: " + Aeq + " , " + Beq + " , " + Ceq + " , " + Deq + "\n";
-                Debug.Log(message); */
-
-                // Instantiate a plane visualization prefab and set it to track the new plane. The
-                // transform is set to the origin with an identity rotation since the mesh for our
-                // prefab is updated in Unity World coordinates.
-
-                planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
             }
         }
     }

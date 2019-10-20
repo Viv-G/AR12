@@ -1,14 +1,15 @@
 ﻿<Properties StartupConfiguration="{821ED78C-8D71-F70F-6A83-B88AC5742900}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GoogleARCore/Examples/HelloAR/Scripts/EntryScript.cs">
     <Files>
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/HelloARController.cs" Line="443" Column="23" />
-      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/PointcloudVisualizer.cs" />
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/EntryScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs" Line="1" Column="1" />
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs" Line="67" Column="13" />
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/ConExit.cs" Line="16" Column="60" />
-      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/Connection.cs" Line="14" Column="44" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/HelloARController.cs" Line="129" Column="46" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/PointcloudVisualizer.cs" Line="61" Column="34" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/EntryScript.cs" Line="42" Column="17" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneGenerator.cs" Line="58" Column="14" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/DetectedPlaneVisualizer.cs" Line="107" Column="42" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/CamImage.cs" Line="34" Column="27" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/ConExit.cs" Line="54" Column="36" />
+      <File FileName="Assets/GoogleARCore/Examples/HelloAR/Scripts/Connection.cs" Line="73" Column="2" />
+      <File FileName="Assets/GoogleARCore/Examples/Common/Scripts/Editor/PointcloudVisualizerEditor.cs" Line="87" Column="85" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,14 +19,16 @@
               <Node name="GoogleARCore" expanded="True">
                 <Node name="Examples" expanded="True">
                   <Node name="Common" expanded="True">
-                    <Node name="Scripts" expanded="True" />
+                    <Node name="Scripts" expanded="True">
+                      <Node name="Editor" expanded="True" />
+                    </Node>
                   </Node>
                   <Node name="ComputerVision" expanded="True">
                     <Node name="Scripts" expanded="True" />
                   </Node>
                   <Node name="HelloAR" expanded="True">
                     <Node name="Scripts" expanded="True">
-                      <Node name="CamImage.cs" selected="True" />
+                      <Node name="EntryScript.cs" selected="True" />
                     </Node>
                   </Node>
                 </Node>

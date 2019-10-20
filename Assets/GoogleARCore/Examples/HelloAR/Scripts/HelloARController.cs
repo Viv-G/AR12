@@ -72,21 +72,6 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         private bool m_IsQuitting = false;
 
-
-        /// <sumary>
-        /// FIELDS FOR IMAGE PROCESSING
-        /// </sumary>
-
-        /*        /// <summary>
-                /// A toggle that is used to select the low resolution CPU camera configuration.
-                /// </summary>
-                public Toggle LowResConfigToggle;
-
-                /// <summary>
-                /// A toggle that is used to select the high resolution CPU camera configuration.
-                /// </summary>
-                public Toggle HighResConfigToggle; */
-
         /// <summary>
         /// A Text box that is used to output the camera intrinsics values.
         /// </summary>
@@ -108,6 +93,40 @@ namespace GoogleARCore.Examples.HelloAR
         /// The frame rate update interval.
         /// </summary>
         private static float s_FrameRateUpdateInterval = 2.0f;
+
+        /// <summary>
+        /// Current Camera Pose
+        /// </summary>
+        public Pose curPose = Pose.identity;
+
+        /// <summary>
+        /// Tracking Variable for points to send
+        /// </summary>
+        private int m_Track;
+
+        /// <summary>
+        /// Tracking Variable for total frames
+        /// </summary>
+        private int m_Frames;
+
+        /// <summary>
+        /// Min values for bounding box
+        /// </summary>
+        public static Vector3 minVals = new Vector3(-0.25f, -1f, 0.1f);
+
+
+        /// <summary>
+        /// Max values for bounding box
+        /// </summary>
+        public static Vector3 maxVals = new Vector3(0.25f, 0.1f, .75f);
+
+        /// <summary>
+        /// Default Confidence Value
+        /// </summary>
+        public static float setConf = 0.25f;
+
+        public static float Dplane;
+        public static bool planeFlag = false;
 
 
         /// <summary>
@@ -144,6 +163,7 @@ namespace GoogleARCore.Examples.HelloAR
         {
             _UpdateApplicationLifecycle();
             _UpdateFrameRate();
+            ExportMeshPoints();
 
             /// Update Camera Intrinsics///
             var cameraIntrinsics = Frame.CameraImage.ImageIntrinsics;
@@ -192,8 +212,8 @@ namespace GoogleARCore.Examples.HelloAR
                         DetectedPlane detectedPlane = hit.Trackable as DetectedPlane;
 
                         Vector3 pCent = detectedPlane.CenterPose.position;
-                        PointcloudVisualizer.minVals.y = (pCent.y + 0.005f);
-                        PointcloudVisualizer.maxVals.y = (pCent.y + 1.0f);
+                        minVals.y = (pCent.y + 0.005f);
+                        maxVals.y = (pCent.y + 2*(maxVals.y));
 
                     Vector3 pNor = detectedPlane.CenterPose.rotation * Vector3.up;
 
@@ -201,7 +221,7 @@ namespace GoogleARCore.Examples.HelloAR
                     float Beq = pNor.y;
                     float Ceq = pNor.z;
                     float Deq = (pNor.x * -pCent.x) + (pNor.y * -pCent.y) + (pNor.z * -pCent.z);
-                    Common.PointcloudVisualizer.Dplane = Deq;
+                    Dplane = Deq;
 
                     string message = "PLANE EQUATION IS: " + Aeq + " , " + Beq + " , " + Ceq + " , " + Deq + "\n";
                     Debug.Log(message);
@@ -226,6 +246,8 @@ namespace GoogleARCore.Examples.HelloAR
 
                     // Make game object a child of the anchor.
                     gameObject.transform.parent = anchor.transform;
+
+                    planeFlag = true;
                 }
             }
         }
@@ -413,6 +435,11 @@ namespace GoogleARCore.Examples.HelloAR
             sr.WriteLine(CameraIntrinsicsOutput.text);
             Debug.Log(CameraIntrinsicsOutput.text);
             sr.Close();
+
+            if (Connection.s.Connected)
+            {
+                Connection.s.Close();
+            }
             ConExit.ConnectOut();
             ConExit.SendArraySize(CamImage.AllData.Count);
             CameraIntrinsicsOutput.text = "Sending " + CamImage.AllData.Count + "Images";
@@ -433,9 +460,51 @@ namespace GoogleARCore.Examples.HelloAR
                 Destroy(result);
             }
             CameraIntrinsicsOutput.text = "Success! Exciting...";
-            Connection.s.Close();
+            //Connection.s.Close();
             ConExit.sOut.Close();
             Application.Quit();
+        }
+
+
+        public void ExportMeshPoints()
+        {
+            string buff = "";
+            m_Track = 0;
+
+            if (Frame.PointCloud.PointCount > 0 && Frame.PointCloud.IsUpdatedThisFrame)
+            {
+                string dPlaneString = Dplane + " ";
+                buff = dPlaneString;
+                curPose = Frame.Pose;
+                string curPosePos = curPose.position.x + " " + curPose.position.y + " " + curPose.position.z + " ";
+                buff += curPosePos;
+
+
+                for (int i = 0; i < Frame.PointCloud.PointCount; i++)
+                {
+                    Vector3 point = Frame.PointCloud.GetPointAsStruct(i); // -UNTRANSFORMED                
+                    int idPoint = Frame.PointCloud.GetPointAsStruct(i).Id;
+                    float conf = Frame.PointCloud.GetPointAsStruct(i).Confidence;
+
+                    if (point.x < minVals.x || point.y < minVals.y || point.z < minVals.z ||
+                        point.x > maxVals.x || point.y > maxVals.y || point.z > maxVals.z || conf < setConf)
+                    {
+                        continue;
+                    }
+
+                    Common.PointcloudVisualizer.AddPointToCache(point);
+                    string content = idPoint + " " + point.x + " " + point.y + " " + point.z + " ";
+                    buff += content;
+
+                    m_Track += 1;
+
+                }
+                if (m_Track != 0)
+                {
+                    HelloAR.Connection.WriteString(m_Track, buff);
+                }
+
+            }
         }
 
         /// <summary>
@@ -443,9 +512,14 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         private void _DoQuit()
         {
-            ExportImages();
-            Connection.s.Close();
-            ConExit.sOut.Close();
+            if (Connection.s.Connected)
+            {
+                Connection.s.Close();
+            }
+            if (ConExit.sOut.Connected)
+            {
+                ConExit.sOut.Close();
+            }
             Application.Quit();
         }
 
